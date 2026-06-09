@@ -249,8 +249,7 @@
   font-size: 0.64rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-soft);
-  opacity: 0.65;
+  color: var(--green-600);
   white-space: nowrap;
 }
 .plot__quad--tr { top: 0.5rem; right: 0.6rem; }
@@ -295,8 +294,7 @@
   transition: transform var(--dur-slow) var(--ease-out-expo),
     opacity var(--dur-slow) var(--ease-out);
 }
-.is-in .bubble,
-.reveal.is-in.bubble {
+.is-in .bubble {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
@@ -399,9 +397,8 @@
 .loop__arrow {
   flex: none;
   align-self: center;
+  display: flex;
   color: var(--sage);
-  font-family: var(--font-mono);
-  font-size: 1.3rem;
 }
 .loop__back {
   margin-top: 1rem;
@@ -420,7 +417,7 @@
   max-width: max-content;
   margin-inline: auto;
 }
-.loop__back-glyph { color: var(--sun); font-size: 1.1rem; }
+.loop__back-glyph { display: inline-flex; color: var(--sun); }
 
 /* ============================================================
    ANNEXE D — GRAPHIQUES (données complémentaires)
@@ -791,6 +788,15 @@
   .judge { grid-template-columns: 1fr; }
   .phases { grid-template-columns: 1fr; }
   .verdict { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .annex__callout { grid-template-columns: 1fr; }
+
+  /* Mapping : bulles à l'échelle pour tenir dans le plot rétréci */
+  .bubble { width: calc(var(--size) * 0.7); height: calc(var(--size) * 0.7); }
+  .bubble__name { font-size: 0.62rem; }
+  .bubble__share { font-size: 0.56rem; }
+  .bubble--sm .bubble__name { font-size: 0.56rem; }
+  .plot__quad { font-size: 0.56rem; }
+  .plot__axis-y { left: -1.7rem; }
 
   /* Table → cartes empilées */
   .dtable thead { display: none; }

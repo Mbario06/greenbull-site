@@ -33,7 +33,6 @@ interface Leader {
 const LEADERS: Leader[] = [
   { name: 'Red Bull', value: 11.4, self: true },
   { name: 'Monster', value: 7.1 },
-  { name: 'Celsius', value: 1.3 },
 ]
 const LEADER_MAX = 11.4
 
@@ -45,7 +44,7 @@ export function AnnexData() {
       pager="A4 / 7"
       title="Le marché en deux graphiques"
       lead="Trajectoire mondiale à horizon 2030 et comparaison du chiffre d’affaires des principaux acteurs."
-      source="Sources : Statista (2024) ; Grand View Research (2024) ; Fortune Business Insights (2024) ; Red Bull (2023) ; Monster Beverage (2023) ; Celsius (2023). Estimations 2025-2030 = consensus analystes."
+      source="Sources : Statista (2024) ; Grand View Research (2024) ; Red Bull (2023) ; Monster Beverage (2023). Estimations 2025-2030 = consensus analystes."
     >
       <div className="charts">
         <figure className="chart reveal">
@@ -94,10 +93,10 @@ export function AnnexData() {
 
         <figure className="chart chart--bars reveal">
           <figcaption>
-            <p className="chart__label">Chiffre d’affaires des principaux acteurs — 2023</p>
+            <p className="chart__label">Chiffre d’affaires des deux leaders — 2023</p>
             <p className="chart__unit">en milliards de dollars</p>
           </figcaption>
-          <div className="bench" role="img" aria-label="Chiffre d'affaires 2023 : Red Bull 11,4, Monster 7,1, Celsius 1,3 milliards de dollars.">
+          <div className="bench" role="img" aria-label="Chiffre d'affaires 2023 : Red Bull 11,4 et Monster 7,1 milliards de dollars.">
             {LEADERS.map((l) => (
               <div className={`bench__row ${l.self ? 'bench__row--self' : ''}`} key={l.name}>
                 <span className="bench__name">{l.name}</span>

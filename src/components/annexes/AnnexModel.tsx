@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import { AnnexSection } from './AnnexSection'
+import { IconArrowRight, IconReturn } from '../icons'
 
 interface LoopStep {
   n: string
@@ -56,7 +57,7 @@ export function AnnexModel() {
             </div>
             {i < STEPS.length - 1 && (
               <span className="loop__arrow" aria-hidden="true">
-                →
+                <IconArrowRight size={20} />
               </span>
             )}
           </Fragment>
@@ -65,7 +66,7 @@ export function AnnexModel() {
 
       <p className="loop__back reveal">
         <span className="loop__back-glyph" aria-hidden="true">
-          ↺
+          <IconReturn size={17} />
         </span>
         Boucle vertueuse · le cash finance le marketing qui finance la boucle suivante
       </p>

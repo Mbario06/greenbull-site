@@ -10,8 +10,8 @@ interface AnnexSectionProps {
   title: ReactNode
   lead?: ReactNode
   panel?: Panel
-  /** note de sources affichée en pied de volet */
-  source?: ReactNode
+  /** note de sources affichée en pied de volet (texte simple — rendu dans un <p>) */
+  source?: string
   children: ReactNode
 }
 

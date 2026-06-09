@@ -70,7 +70,7 @@ export function AnnexRecommendation() {
       </div>
 
       <div className="reco-grid">
-        <div className="reco__kpi reveal">
+        <div className="reveal">
           <p className="kpi__label">KPI de faisabilité</p>
           <div className="kpi-chips">
             {KPIS.map((k) => (
@@ -82,7 +82,7 @@ export function AnnexRecommendation() {
           </div>
         </div>
 
-        <div className="reco__scores reveal">
+        <div className="reveal">
           <p className="scores__label">Note de faisabilité</p>
           <div className="scores">
             {SCORES.map((s) => (

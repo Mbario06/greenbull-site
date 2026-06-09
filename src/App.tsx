@@ -1,5 +1,6 @@
 import './styles/sections.css'
 import './styles/annexes.css'
+import './styles/insights.css'
 import { CanStage } from './canvas/CanStage'
 import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
@@ -12,6 +13,10 @@ import { Impact } from './components/Impact'
 import { Pricing } from './components/Pricing'
 import { Gallery } from './components/Gallery'
 import { FinalCta } from './components/FinalCta'
+import { MarketFigures } from './components/insights/MarketFigures'
+import { ReturnProof } from './components/insights/ReturnProof'
+import { Profitability } from './components/insights/Profitability'
+import { Limits } from './components/insights/Limits'
 import { Annexes } from './components/annexes/Annexes'
 import { Footer } from './components/Footer'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
@@ -39,6 +44,7 @@ export default function App() {
 
         <ReturnRecharge />
         <Rewards />
+        <ReturnProof />
 
         <Interlude
           eyebrow="La canette parle"
@@ -47,8 +53,11 @@ export default function App() {
         />
 
         <Impact />
+        <MarketFigures />
         <Pricing />
+        <Profitability />
         <Gallery />
+        <Limits />
         <FinalCta />
         <Annexes />
       </main>

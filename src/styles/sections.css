@@ -31,14 +31,23 @@
   filter: blur(8px);
 }
 
-.can-stage__static {
+.can-stage__turn {
   position: absolute;
   left: 50%;
-  top: 38%;
-  height: 62vh;
-  width: auto;
+  top: 50%;
+  height: 88vh;
+  aspect-ratio: 880 / 1340;
   transform: translate(-50%, -50%);
-  filter: drop-shadow(0 30px 40px rgba(20, 33, 15, 0.3));
+  will-change: transform;
+}
+.can-stage__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 38px 44px rgba(20, 33, 15, 0.3));
+  will-change: opacity;
 }
 
 /* ---- Échafaudage ---- */
@@ -57,6 +66,8 @@ main {
 }
 .panel--soft {
   background: var(--paper-2);
+  /* texte secondaire renforcé : --text-soft d'origine tombe sous 4.5:1 sur paper-2 */
+  --text-soft: #5d6248;
 }
 .panel--green {
   background:
@@ -1007,7 +1018,7 @@ main {
   .nav__cta svg { display: none; }
 
   /* hero : canette en haut, texte ancré en bas sur un voile lisible */
-  .can-stage__static { top: 30%; height: 52vh; }
+  .can-stage__turn { top: 30%; height: 56vh; }
   .hero { justify-content: flex-end; padding-block: 96px 2.5rem; }
   .hero__top { position: absolute; top: 90px; left: 0; right: 0; z-index: 2; }
   .hero::before {

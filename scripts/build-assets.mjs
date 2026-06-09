@@ -1,11 +1,11 @@
 // build-assets.mjs
-// Pipeline d'assets GreenBull :
-//  1. Extrait le logo "double taureau + soleil" des photos (clé de saturation,
-//     fond crème + transparence supprimés) -> public/textures/bull-mark.png
-//  2. Optimise les 8 rendus + l'affiche en .webp (transparence conservee)
-//     vers public/can/ pour les sections de contenu.
+// Pipeline d'assets GreenBull (uniquement `sharp`) :
+//  1. Rendus + affiche détourés en .webp -> public/can/ (sections de contenu).
+//  2. Frames "turntable" alignées (face → 3/4 → dos) -> public/can/turn-*.webp
+//     (rotation de la canette par fondu enchaîné au scroll).
 //
-// Aucune dependance native exotique : uniquement `sharp`.
+// Le fond des PNG sources est un damier de transparence "cuit" par ChatGPT :
+// on le retire par flood-fill depuis les bords.
 // Lancement : node scripts/build-assets.mjs
 
 import sharp from 'sharp'
@@ -16,10 +16,8 @@ import { mkdirSync } from 'node:fs'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
 const SRC = join(ROOT, '..') // dossier ED03 ou se trouvent les PNG bruts
-const OUT_TEX = join(ROOT, 'public', 'textures')
 const OUT_CAN = join(ROOT, 'public', 'can')
 
-mkdirSync(OUT_TEX, { recursive: true })
 mkdirSync(OUT_CAN, { recursive: true })
 
 // Mapping des fichiers source -> noms semantiques
@@ -35,92 +33,8 @@ const PHOTOS = {
   'poster':    'ChatGPT Image 12 mai 2026 à 16_38_36.png',
 }
 
-const BULL_SOURCE = join(SRC, PHOTOS['front'])
-
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. Extraction du logo taureau par cle de saturation
-// ─────────────────────────────────────────────────────────────────────────────
-async function extractBull() {
-  // Region genereuse autour du logo (image source 1086x1448).
-  // Le logo (taureaux rouges + soleil jaune) se situe au-dessus du wordmark.
-  const region = { left: 240, top: 360, width: 600, height: 300 }
-
-  const { data, info } = await sharp(BULL_SOURCE)
-    .extract(region)
-    .ensureAlpha()
-    .raw()
-    .toBuffer({ resolveWithObject: true })
-
-  const { width, height, channels } = info
-  const out = Buffer.alloc(width * height * 4)
-
-  // Bornes du bounding box des pixels conserves
-  let minX = width, minY = height, maxX = 0, maxY = 0
-  let kept = 0
-
-  for (let i = 0; i < width * height; i++) {
-    const r = data[i * channels]
-    const g = data[i * channels + 1]
-    const b = data[i * channels + 2]
-    const a = channels === 4 ? data[i * channels + 3] : 255
-
-    const max = Math.max(r, g, b)
-    const min = Math.min(r, g, b)
-    const sat = max === 0 ? 0 : (max - min) / max
-
-    // On garde le rouge vif et le jaune vif (le taureau + le soleil),
-    // on jette le creme (faible saturation) et le transparent.
-    // Le vert du wordmark est exclu par la region (au-dessus de GREENBULL).
-    const isVivid = sat > 0.45 && max > 110 && a > 200
-    // Anti-vert de securite : si vert nettement dominant -> on jette
-    const isGreenish = g > r + 12 && g > b + 12
-
-    let alpha = 0
-    if (isVivid && !isGreenish) {
-      // feather sur le bord de seuil de saturation
-      alpha = Math.round(Math.max(0, Math.min(1, (sat - 0.42) / 0.12)) * 255)
-    }
-
-    const o = i * 4
-    out[o] = r
-    out[o + 1] = g
-    out[o + 2] = b
-    out[o + 3] = alpha
-
-    if (alpha > 24) {
-      kept++
-      const x = i % width
-      const y = (i / width) | 0
-      if (x < minX) minX = x
-      if (y < minY) minY = y
-      if (x > maxX) maxX = x
-      if (y > maxY) maxY = y
-    }
-  }
-
-  if (kept < 200) {
-    throw new Error(`Extraction taureau: trop peu de pixels (${kept}). Ajuster region/seuils.`)
-  }
-
-  // padding et recadrage serre
-  const pad = 10
-  minX = Math.max(0, minX - pad)
-  minY = Math.max(0, minY - pad)
-  maxX = Math.min(width - 1, maxX + pad)
-  maxY = Math.min(height - 1, maxY + pad)
-  const bw = maxX - minX + 1
-  const bh = maxY - minY + 1
-
-  await sharp(out, { raw: { width, height, channels: 4 } })
-    .extract({ left: minX, top: minY, width: bw, height: bh })
-    .png()
-    .toFile(join(OUT_TEX, 'bull-mark.png'))
-
-  console.log(`✓ bull-mark.png  ${bw}x${bh}  (pixels conserves: ${kept})`)
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 2. Détourage : le fond est un damier de transparence "cuit" par ChatGPT
+// 1. Détourage : le fond est un damier de transparence "cuit" par ChatGPT
 //    (carrés neutres clairs ~225/248). On le retire par flood-fill depuis les
 //    bords — les pixels neutres-clairs connectés au bord deviennent transparents.
 //    L'étiquette crème (chaude, R>G>B) et les reflets métal (intérieurs) survivent.
@@ -200,6 +114,71 @@ async function cutoutCan(srcPath, outPath, targetW) {
     .toFile(outPath)
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// 2. Frames "turntable" alignées : on détoure, on recadre sur la canette, on la
+//    remet centrée à hauteur constante sur un canevas fixe -> le fondu enchaîné
+//    au scroll superpose des canettes alignées (pas de saut).
+// ─────────────────────────────────────────────────────────────────────────────
+async function cutoutToPng(srcPath, targetW) {
+  const { data, info } = await sharp(srcPath)
+    .resize({ width: targetW, withoutEnlargement: true })
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true })
+  const { width, height, channels } = info
+  const removed = new Uint8Array(width * height)
+  const stack = []
+  const pushIfBg = (x, y) => {
+    const i = y * width + x
+    if (removed[i]) return
+    const o = i * channels
+    if (isNeutralLight(data[o], data[o + 1], data[o + 2])) {
+      removed[i] = 1
+      stack.push(i)
+    }
+  }
+  for (let x = 0; x < width; x++) { pushIfBg(x, 0); pushIfBg(x, height - 1) }
+  for (let y = 0; y < height; y++) { pushIfBg(0, y); pushIfBg(width - 1, y) }
+  while (stack.length) {
+    const i = stack.pop()
+    const x = i % width
+    const y = (i / width) | 0
+    if (x > 0) pushIfBg(x - 1, y)
+    if (x < width - 1) pushIfBg(x + 1, y)
+    if (y > 0) pushIfBg(x, y - 1)
+    if (y < height - 1) pushIfBg(x, y + 1)
+  }
+  for (let i = 0; i < width * height; i++) if (removed[i]) data[i * channels + 3] = 0
+  return sharp(data, { raw: { width, height, channels } }).png().toBuffer()
+}
+
+const FRAME_W = 880
+const FRAME_H = 1340
+const CAN_H = 1200
+
+async function alignedFrame(srcFile, outName) {
+  const png = await cutoutToPng(join(SRC, srcFile), 1000)
+  const trimmed = await sharp(png)
+    .trim({ background: { r: 0, g: 0, b: 0, alpha: 0 }, threshold: 0 })
+    .resize({ height: CAN_H })
+    .png()
+    .toBuffer()
+  const m = await sharp(trimmed).metadata()
+  await sharp({
+    create: { width: FRAME_W, height: FRAME_H, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } },
+  })
+    .composite([
+      {
+        input: trimmed,
+        left: Math.round((FRAME_W - m.width) / 2),
+        top: Math.round((FRAME_H - CAN_H) / 2),
+      },
+    ])
+    .webp({ quality: 90, alphaQuality: 100, effort: 5 })
+    .toFile(join(OUT_CAN, outName))
+  console.log(`✓ can/${outName}  (${m.width}x${CAN_H} centrée)`)
+}
+
 async function optimizePhotos() {
   for (const [name, file] of Object.entries(PHOTOS)) {
     const src = join(SRC, file)
@@ -215,6 +194,10 @@ async function optimizePhotos() {
   }
 }
 
-await extractBull()
+// frames du turntable, dans l'ordre de rotation
+await alignedFrame(PHOTOS['front'], 'turn-0.webp')
+await alignedFrame(PHOTOS['q3-c'], 'turn-1.webp')
+await alignedFrame(PHOTOS['top'], 'turn-2.webp')
+await alignedFrame(PHOTOS['back'], 'turn-3.webp')
 await optimizePhotos()
 console.log('Termine.')

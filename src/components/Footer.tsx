@@ -11,8 +11,12 @@ export function Footer() {
           <a href="#concept">Le concept</a>
           <a href="#return">Return &amp; Recharge</a>
           <a href="#rewards">Récompenses</a>
+          <a href="#realiste">Faisabilité</a>
           <a href="#impact">Impact</a>
+          <a href="#marche">Marché</a>
           <a href="#pricing">Prix</a>
+          <a href="#rentabilite">Rentabilité</a>
+          <a href="#limites">Limites</a>
           <a href="#annexes">Annexes</a>
         </nav>
 

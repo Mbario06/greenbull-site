@@ -7,16 +7,11 @@ import { prefersReducedMotion } from '../lib/scrollState'
  */
 export function useCountUp(target: number, duration = 1400) {
   const ref = useRef<HTMLElement>(null)
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(() => (prefersReducedMotion() ? target : 0))
 
   useEffect(() => {
     const el = ref.current
-    if (!el) return
-
-    if (prefersReducedMotion()) {
-      setValue(target)
-      return
-    }
+    if (!el || prefersReducedMotion()) return
 
     let raf = 0
     let started = false
