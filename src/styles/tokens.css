@@ -1,0 +1,88 @@
+/* ============================================================
+   GreenBull — Design tokens
+   Direction : "green premium éditorial" — papier crème chaud,
+   vert bouteille profond, accents olive/sauge, rouge Bull rare,
+   soleil jaune. Inspiré directement de la canette Return Edition.
+   ============================================================ */
+
+:root {
+  /* ---- Palette canette ---- */
+  --cream: #f4efe1; /* crème de l'étiquette */
+  --paper: #f7f2e7; /* fond papier du site */
+  --paper-2: #efe8d6; /* panneau crème plus dense */
+  --bone: #fbf8f0;
+
+  --green-ink: #14210f; /* texte vert quasi-noir */
+  --green-900: #1b2c15;
+  --green-800: #243a1c;
+  --green-700: #324e24; /* vert bouteille */
+  --green-600: #436a2f;
+  --olive: #7f8c4e; /* olive/sauge du bas de canette */
+  --olive-400: #9aa766;
+  --sage: #b8c191;
+  --sage-200: #d6dab9;
+
+  --red: #d5102f; /* rouge Bull — accent rare */
+  --red-deep: #a50d24;
+  --sun: #ffce1f; /* soleil jaune */
+  --sun-deep: #f0b400;
+
+  /* ---- Rôles sémantiques ---- */
+  --bg: var(--paper);
+  --surface: var(--bone);
+  --surface-green: var(--green-800);
+  --text: #434a38; /* corps sur fond clair */
+  --text-strong: var(--green-ink);
+  --text-soft: #6c7159;
+  --text-on-green: #eef0df;
+  --text-on-green-soft: #b9c39c;
+  --line: rgba(20, 33, 15, 0.12);
+  --line-strong: rgba(20, 33, 15, 0.24);
+  --accent: var(--green-700);
+
+  /* ---- Typographie ---- */
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Hanken Grotesk', system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+
+  /* échelle fluide */
+  --t-mega: clamp(3.5rem, 1.5rem + 9vw, 11rem);
+  --t-hero: clamp(2.8rem, 1rem + 7vw, 7.5rem);
+  --t-h1: clamp(2.4rem, 1.2rem + 4vw, 5rem);
+  --t-h2: clamp(1.9rem, 1.2rem + 2.4vw, 3.2rem);
+  --t-h3: clamp(1.3rem, 1rem + 1vw, 1.85rem);
+  --t-lead: clamp(1.05rem, 0.95rem + 0.6vw, 1.4rem);
+  --t-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --t-small: 0.875rem;
+  --t-kicker: 0.74rem;
+
+  /* ---- Espacement ---- */
+  --space-section: clamp(5rem, 3rem + 8vw, 11rem);
+  --gutter: clamp(1.25rem, 0.5rem + 3vw, 4rem);
+  --container: 1320px;
+  --container-tight: 980px;
+
+  /* ---- Forme & profondeur ---- */
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 28px;
+  --r-xl: 40px;
+  --r-pill: 999px;
+  --shadow-soft: 0 1px 2px rgba(20, 33, 15, 0.04),
+    0 8px 24px -12px rgba(20, 33, 15, 0.18);
+  --shadow-lift: 0 2px 6px rgba(20, 33, 15, 0.05),
+    0 30px 60px -28px rgba(20, 33, 15, 0.4);
+
+  /* ---- Motion ---- */
+  --dur-fast: 180ms;
+  --dur: 320ms;
+  --dur-slow: 640ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --z-canvas: 0;
+  --z-content: 10;
+  --z-nav: 40;
+  --z-overlay: 100;
+}
