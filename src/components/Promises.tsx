@@ -13,8 +13,8 @@ const PROMISES: Promise[] = [
   {
     icon: <IconBolt size={30} />,
     n: '01',
-    title: 'Énergie plus clean',
-    desc: 'Formule allégée, anti-crash. Le boost — sans la chute qui va avec.',
+    title: 'Formule allégée en sucres',
+    desc: 'Moins de sucres, anti-crash. Le boost — sans la chute qui va avec.',
     span: true,
   },
   {

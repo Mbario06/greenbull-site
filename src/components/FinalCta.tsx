@@ -1,4 +1,4 @@
-import { IconArrowRight, IconScan } from './icons'
+import { IconArrowRight } from './icons'
 
 export function FinalCta() {
   return (
@@ -10,16 +10,16 @@ export function FinalCta() {
         </h2>
         <p className="final__lead">
           Une canette ne devrait pas finir sa vie en déchet. Avec GreenBull
-          Return, chaque retour te rapporte — et nous rapproche d’une énergie
+          Return, chaque retour te rapporte — et nous rapproche d'une énergie
           vraiment circulaire.
         </p>
         <div className="final__actions">
-          <a href="#join" className="btn btn--red">
-            <IconScan size={18} />
-            Télécharger l’app GreenBull
+          <a href="#return" className="btn btn--red">
+            Comment ça marche
+            <IconArrowRight size={18} />
           </a>
-          <a href="#rewards" className="btn btn--ghost btn--on-dark">
-            Trouver un point Return
+          <a href="#annexes" className="btn btn--ghost btn--on-dark">
+            Explorer les annexes
             <IconArrowRight size={18} />
           </a>
         </div>
