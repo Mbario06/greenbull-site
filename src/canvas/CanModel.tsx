@@ -23,7 +23,7 @@ export function CanModel() {
   const { gl } = useThree()
 
   /* ── Texture label ───────────────────────────────────────────────────── */
-  const label = useTexture('/can/label.png')
+  const label = useTexture(`${import.meta.env.BASE_URL}can/label.png`)
   useMemo(() => {
     label.wrapS       = THREE.RepeatWrapping
     label.colorSpace  = THREE.SRGBColorSpace

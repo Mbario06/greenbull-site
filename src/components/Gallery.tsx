@@ -26,13 +26,13 @@ export function Gallery() {
 
         <div className="gallery">
           <figure className="gallery__main reveal">
-            <img src="/can/front-b.webp" alt="Canette GreenBull Return Edition, face avant" loading="lazy" width={1000} height={1334} />
+            <img src={`${import.meta.env.BASE_URL}can/front-b.webp`} alt="Canette GreenBull Return Edition, face avant" loading="lazy" width={1000} height={1334} />
           </figure>
           <figure className="gallery__side gallery__side--a reveal">
-            <img src="/can/back.webp" alt="Dos de la canette GreenBull, mentions et code Return" loading="lazy" width={1000} height={1334} />
+            <img src={`${import.meta.env.BASE_URL}can/back.webp`} alt="Dos de la canette GreenBull, mentions et code Return" loading="lazy" width={1000} height={1334} />
           </figure>
           <figure className="gallery__side gallery__side--b reveal">
-            <img src="/can/q3-c.webp" alt="Canette GreenBull vue de trois quarts" loading="lazy" width={1000} height={1334} />
+            <img src={`${import.meta.env.BASE_URL}can/q3-c.webp`} alt="Canette GreenBull vue de trois quarts" loading="lazy" width={1000} height={1334} />
           </figure>
 
           <dl className="principles reveal">
