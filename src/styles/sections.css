@@ -26,6 +26,11 @@
   filter: blur(8px);
 }
 
+/* Desktop : la canette est décalée à droite → le halo la suit */
+@media (min-width: 721px) {
+  .can-stage__halo { left: 60%; }
+}
+
 .can-stage__turn {
   position: absolute;
   left: 50%;
