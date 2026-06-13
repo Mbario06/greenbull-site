@@ -34,7 +34,7 @@ export function AnnexFeasibility() {
     <AnnexSection
       id="annexe-e"
       eyebrow="Annexe E · Faisabilité"
-      pager="A5 / 7"
+      pager="A5 / 9"
       panel="soft"
       title="Le modèle Return est-il réaliste ?"
       lead="Les systèmes de retour fonctionnent là où ils existent. Reste à distinguer ce qui est crédible pour une marque seule de ce qui ne l’est pas."

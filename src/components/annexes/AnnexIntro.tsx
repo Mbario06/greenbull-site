@@ -15,6 +15,8 @@ const TOC: TocEntry[] = [
   { letter: 'E', cat: 'Faisabilité', title: 'Le modèle Return est-il réaliste ?', href: '#annexe-e' },
   { letter: 'F', cat: 'Benchmark', title: 'Les systèmes de retour existants', href: '#annexe-f' },
   { letter: 'G', cat: 'Recommandation', title: 'Un pilote Return & Recharge', href: '#annexe-g' },
+  { letter: 'H', cat: 'Partenariats', title: 'Carrefour, Chaque Canette Compte, Elise', href: '#annexe-h' },
+  { letter: 'I', cat: 'Formule & rentabilité', title: 'La recette et l’économie d’une canette', href: '#annexe-i' },
   { letter: 'Réf', cat: 'Bibliographie', title: 'Sources mobilisées', href: '#bibliographie' },
 ]
 
@@ -27,9 +29,9 @@ export function AnnexIntro() {
           <p className="kicker">Annexes du dossier</p>
           <h2 className="section__title">Le dossier, en profondeur.</h2>
           <p className="section__lead">
-            Sept volets pour étayer l’analyse — trajectoire de la marque, données
-            de marché et faisabilité du concept Return — suivis de la
-            bibliographie.
+            Neuf volets pour étayer l’analyse — trajectoire de la marque, données
+            de marché, faisabilité, partenaires de collecte, formule et marges du
+            concept Return — suivis de la bibliographie.
           </p>
         </header>
 

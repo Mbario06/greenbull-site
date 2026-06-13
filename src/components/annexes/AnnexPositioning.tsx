@@ -24,7 +24,7 @@ export function AnnexPositioning() {
     <AnnexSection
       id="annexe-b"
       eyebrow="Annexe B · Positionnement"
-      pager="A2 / 7"
+      pager="A2 / 9"
       title="Mapping concurrentiel"
       lead="Où chaque acteur se situe sur les axes prix et puissance de marque. La taille des bulles est proportionnelle à la part de marché."
       source="Mapping établi à partir de Euromonitor (2024), Statista (2024), NielsenIQ (2024) et observations de marché."

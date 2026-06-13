@@ -7,9 +7,11 @@ import { AnnexData } from './AnnexData'
 import { AnnexFeasibility } from './AnnexFeasibility'
 import { AnnexBenchmark } from './AnnexBenchmark'
 import { AnnexRecommendation } from './AnnexRecommendation'
+import { AnnexPartners } from './AnnexPartners'
+import { AnnexFormula } from './AnnexFormula'
 import { Bibliography } from './Bibliography'
 
-/** Zone annexes du dossier : index + sept volets A→G + bibliographie. */
+/** Zone annexes du dossier : index + neuf volets A→I + bibliographie. */
 export function Annexes() {
   return (
     <>
@@ -22,6 +24,8 @@ export function Annexes() {
       <AnnexFeasibility />
       <AnnexBenchmark />
       <AnnexRecommendation />
+      <AnnexPartners />
+      <AnnexFormula />
       <Bibliography />
     </>
   )

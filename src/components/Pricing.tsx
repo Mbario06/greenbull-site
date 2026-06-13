@@ -26,7 +26,10 @@ export function Pricing() {
           <p className="section__lead">
             Un prix psychologique optimal de <strong>1,95&nbsp;€</strong> :
             +11&nbsp;% vs Red&nbsp;Bull Original, −15&nbsp;% vs Organics. Le
-            différentiel éco, sans casser la cohérence premium.
+            différentiel éco, sans casser la cohérence premium. Optimum confirmé
+            par notre mini-enquête (n&nbsp;=&nbsp;50, juin 2026) :
+            <strong>68&nbsp;%</strong> d’acceptabilité, 90&nbsp;% prêts à
+            l’essayer.
           </p>
         </header>
 
@@ -39,12 +42,12 @@ export function Pricing() {
             <p className="price-card__seg">Premium responsable</p>
             <dl className="price-card__meta">
               <div>
-                <dt>Acceptation cible</dt>
-                <dd className="tabular">65–70 %</dd>
+                <dt>Acceptabilité (n=50)</dt>
+                <dd className="tabular">68 %</dd>
               </div>
               <div>
                 <dt>Cible</dt>
-                <dd>Eco-performers, 18–28 ans</dd>
+                <dd>Eco-performers, 18–34 ans</dd>
               </div>
               <div>
                 <dt>Format</dt>
@@ -71,6 +74,14 @@ export function Pricing() {
             ))}
           </div>
         </div>
+
+        <p className="src-note reveal">
+          Mini-enquête prix · 50 répondants · juin 2026 · méthode Stoetzel (prix
+          d’acceptabilité). Optimum à 1,95&nbsp;€ — 68&nbsp;% d’acceptabilité,
+          zone 1,39–2,50&nbsp;€ ; 90&nbsp;% prêts à l’essayer, premium jugé
+          justifié ou acceptable par 86&nbsp;%. Échantillon de commodité :
+          valeur indicative, non projetable.
+        </p>
       </div>
     </section>
   )

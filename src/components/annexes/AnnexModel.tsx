@@ -41,7 +41,7 @@ export function AnnexModel() {
     <AnnexSection
       id="annexe-c"
       eyebrow="Annexe C · Modèle économique"
-      pager="A3 / 7"
+      pager="A3 / 9"
       panel="green"
       title="La boucle vertueuse Red Bull"
       lead="Comment la marque-média auto-finance sa propre domination : le sponsoring n’est pas un coût, c’est le moteur."

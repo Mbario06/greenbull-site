@@ -53,7 +53,7 @@ export function AnnexRecommendation() {
     <AnnexSection
       id="annexe-g"
       eyebrow="Annexe G · Recommandation"
-      pager="A7 / 7"
+      pager="A7 / 9"
       panel="green"
       title="Un pilote Return & Recharge, mesurable"
       lead="Éviter le greenwashing : un dispositif progressif, réaliste, piloté par les KPI."

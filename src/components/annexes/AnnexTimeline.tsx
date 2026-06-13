@@ -57,7 +57,7 @@ export function AnnexTimeline() {
     <AnnexSection
       id="annexe-a"
       eyebrow="Annexe A · Timeline"
-      pager="A1 / 7"
+      pager="A1 / 9"
       panel="soft"
       title="Quarante ans en huit moments"
       lead="Les jalons qui ont sculpté Red Bull, de la canette autrichienne au record mondial."

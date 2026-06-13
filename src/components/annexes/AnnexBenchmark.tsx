@@ -47,7 +47,7 @@ export function AnnexBenchmark() {
     <AnnexSection
       id="annexe-f"
       eyebrow="Annexe F · Benchmark"
-      pager="A6 / 7"
+      pager="A6 / 9"
       title="Les systèmes de retour existent déjà — mais collectifs"
       lead="Les dispositifs les plus performants sont nationaux et multi-marques. GreenBull ajoute une couche de gamification au-dessus d’une collecte réelle."
       source="Sources : TOMRA Allemagne ; Infinitum / TOMRA Norvège ; Re-turn (Irlande) ; Citeo / Carrefour ReUse."

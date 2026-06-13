@@ -41,7 +41,7 @@ export function AnnexData() {
     <AnnexSection
       id="annexe-d"
       eyebrow="Annexe D · Données complémentaires"
-      pager="A4 / 7"
+      pager="A4 / 9"
       title="Le marché en deux graphiques"
       lead="Trajectoire mondiale à horizon 2030 et comparaison du chiffre d’affaires des principaux acteurs."
       source="Sources : Statista (2024) ; Grand View Research (2024) ; Red Bull (2023) ; Monster Beverage (2023). Estimations 2025-2030 = consensus analystes."
