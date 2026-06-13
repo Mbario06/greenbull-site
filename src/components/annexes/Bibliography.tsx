@@ -34,6 +34,20 @@ const GROUPS: RefGroup[] = [
   },
   {
     n: '3',
+    cat: 'Revues professionnelles à consulter (veille marché & distribution)',
+    refs: [
+      'LSA — Libre Service Actualités (grande conso & distribution).',
+      'Rayon Boissons (marché des boissons, France).',
+      'Linéaires (merchandising & distribution alimentaire).',
+      'Points de Vente (retail & GMS).',
+      'Marketing Magazine ; Stratégies (marketing & communication).',
+      'CB News (publicité & médias).',
+      'Cosmétique Mag (FMCG, veille tendances).',
+      'L’Usine Nouvelle (industrie & production).',
+    ],
+  },
+  {
+    n: '4',
     cat: 'Entreprise (Red Bull)',
     refs: [
       'Red Bull GmbH (2023). Company figures. https://www.redbull.com/int-en/energydrink/company-figures',
@@ -42,7 +56,7 @@ const GROUPS: RefGroup[] = [
     ],
   },
   {
-    n: '4',
+    n: '5',
     cat: 'Recyclage, consigne & partenaires (web)',
     refs: [
       'International Aluminium Institute (2023). Recycling. https://international-aluminium.org (consulté en juin 2026)',
@@ -54,7 +68,7 @@ const GROUPS: RefGroup[] = [
     ],
   },
   {
-    n: '5',
+    n: '6',
     cat: 'Santé & réglementation',
     refs: [
       'EFSA (2015). Scientific opinion on the safety of caffeine.',
@@ -74,7 +88,7 @@ interface Reli {
 
 const LEGEND: Reli[] = [
   { type: 'Donnée officielle (entreprise / institution)', ex: 'CA & canettes Red Bull, EFSA, ANSES, Citeo', level: 'Élevée' },
-  { type: 'Cabinet / presse professionnelle', ex: 'Statista, Euromonitor, NielsenIQ, GVR, Forbes', level: 'Moyenne à élevée' },
+  { type: 'Cabinet / presse professionnelle', ex: 'Statista, NielsenIQ, GVR, Forbes, LSA, Rayon Boissons', level: 'Moyenne à élevée' },
   { type: 'Estimation sectorielle', ex: 'Budget marketing ~30 % du CA, COGS canette', level: 'À manier avec prudence' },
   { type: 'Hypothèse du groupe', ex: 'Taux de retour, marge Return, partenariats', level: 'À tester', self: true },
 ]

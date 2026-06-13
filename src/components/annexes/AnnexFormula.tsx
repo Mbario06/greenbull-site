@@ -11,9 +11,10 @@ interface Spec {
 const RECIPE: Spec[] = [
   {
     comp: 'Caféine',
-    rb: '80 mg (≈ 1 espresso)',
-    gb: '80 mg — option café vert / guarana',
-    stance: 'Énergie maintenue, affichage clair, réservé aux 18+',
+    rb: '80 mg de synthèse (≈ 1 espresso)',
+    gb: '80 mg d’origine naturelle — guarana & café vert',
+    stance: 'Énergie identique, mais source végétale assumée · réservé aux 18+',
+    self: true,
   },
   {
     comp: 'Sucres',
@@ -29,15 +30,16 @@ const RECIPE: Spec[] = [
     stance: 'Formule reconnue, communication sobre',
   },
   {
-    comp: 'Vitamines & arômes',
+    comp: 'Vitamines, magnésium & arômes',
     rb: 'B3 · B5 · B6 · B12',
-    gb: 'Vitamines B + arômes naturels',
-    stance: 'Naturalité affichée, sans sur-promesse',
+    gb: 'Vitamines B + magnésium + arômes naturels',
+    stance: 'Magnésium = anti-fatigue d’origine naturelle, sans sur-promesse',
+    self: true,
   },
   {
     comp: 'Emballage',
     rb: 'Canette aluminium',
-    gb: 'Alu 100 % recyclable · 0 film plastique',
+    gb: 'Alu 100 % recyclable · encre végétale · 0 film plastique',
     stance: 'Cœur de la promesse Return',
     self: true,
   },
@@ -54,7 +56,7 @@ const PNL: PnL[] = [
   { line: 'Prix consommateur TTC', amount: '1,95 €', note: 'GMS France', kind: 'in' },
   { line: '− TVA (20 %)', amount: '−0,33 €', note: '→ 1,62 € HT', kind: 'out' },
   { line: '− Marge distributeur (~28 %)', amount: '−0,45 €', note: 'prix de cession ≈ 1,17 € HT', kind: 'out' },
-  { line: '− COGS (canette, liquide, remplissage, logistique)', amount: '≈ −0,28 €', note: 'sucre réduit ≈ compensé par alu + arômes naturels', kind: 'out' },
+  { line: '− COGS (canette, liquide, remplissage, logistique)', amount: '≈ −0,28 €', note: 'sucre réduit ≈ compensé par guarana / café vert, magnésium & arômes naturels', kind: 'out' },
   { line: '− Dispositif Return (QR, PLV, récompense × taux de retour)', amount: '≈ −0,09 €', note: 'coupon 0,15 € × ~30 % de retour + amortissement', kind: 'out' },
   { line: '= Marge brute contributive', amount: '≈ 0,80 €', note: 'avant marketing & structure', kind: 'sum' },
 ]
@@ -67,8 +69,8 @@ export function AnnexFormula() {
       pager="A9 / 9"
       panel="soft"
       title="La recette et l’économie d’une canette"
-      lead="Trois partis pris produit — caféine maîtrisée, sucres allégés, taurine maintenue — et une lecture transparente de la marge, poste par poste."
-      source="Recette et coûts = hypothèses de travail (ordres de grandeur du secteur), non auditées. Repères caféine / taurine / sucres d’après valeurs publiques Red Bull et seuils EFSA (2015) & ANSES (2022)."
+      lead="Quatre partis pris produit — caféine d’origine naturelle, sucres allégés, magnésium ajouté, taurine maintenue — et une lecture transparente de la marge, poste par poste."
+      source="Recette et coûts = hypothèses de travail (ordres de grandeur du secteur), non auditées. Caféine naturelle (guarana, café vert) et magnésium = choix de formulation du groupe. Repères caféine / taurine / sucres d’après valeurs publiques Red Bull et seuils EFSA (2015) & ANSES (2022)."
     >
       <div className="dtable-wrap reveal">
         <table className="dtable">
